@@ -1,0 +1,74 @@
+@use '@/styles/mastodon/mixins';
+
+.wrapper {
+  --form-field-label-gap: var(--space-1);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--form-field-label-gap);
+  color: var(--color-text-primary);
+  font-size: 15px;
+
+  &:has(.hint) {
+    --form-field-label-gap: var(--space-2);
+  }
+
+  &[data-input-placement^='inline'] {
+    flex-direction: row;
+
+    --form-field-label-gap: var(--space-2);
+  }
+
+  &[data-input-placement='inline-start'] {
+    align-items: start;
+  }
+
+  &[data-input-placement='inline-end'] {
+    align-items: center;
+  }
+}
+
+.labelWrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: var(--space-half);
+
+  [data-compact='true'] & {
+    gap: 0;
+  }
+}
+
+.label {
+  @include mixins.type-label;
+
+  [data-compact='true'] & {
+    @include mixins.type-caption;
+  }
+
+  &[data-has-parent-fieldset='true'] {
+    font-weight: normal;
+  }
+}
+
+.hint {
+  @include mixins.type-caption;
+
+  color: var(--color-text-tertiary);
+}
+
+.status {
+  // If there's no content, we need to compensate for the parent's
+  // flex gap to avoid extra spacing below or next to the field.
+  &:empty {
+    margin-top: calc(-1 * var(--form-field-label-gap));
+  }
+
+  [data-input-placement^='inline'] &:empty {
+    margin-inline-start: calc(-1 * var(--form-field-label-gap));
+  }
+}
+
+.inputWrapper {
+  display: block;
+}

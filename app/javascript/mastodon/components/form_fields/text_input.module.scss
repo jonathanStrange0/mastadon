@@ -1,0 +1,67 @@
+@use '@/styles/mastodon/mixins';
+
+.input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  padding: var(--space-2);
+  font-family: inherit;
+  @include mixins.type-body-compact;
+
+  color: var(--color-text-primary);
+  background: var(--color-bg-primary);
+  border: var(--bw-thin) solid var(--color-border-input);
+  border-radius: var(--space-2);
+  caret-color: var(--color-text-brand);
+  outline: var(--outline-focus-default);
+  outline-color: transparent;
+  outline-offset: -2px;
+  transition: all 0.15s ease-out;
+
+  @media screen and (width <= 600px) {
+    font-size: 16px;
+  }
+
+  .iconWrapper & {
+    // Make space for icon displayed at start of input
+    padding-inline-start: 30px;
+  }
+
+  &::placeholder {
+    color: var(--color-text-secondary);
+  }
+
+  &:focus:user-invalid,
+  &:required:user-invalid,
+  [data-has-error='true'] & {
+    border-color: var(--color-border-error);
+  }
+
+  &:focus {
+    outline-color: var(--color-border-brand);
+    outline-width: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+textarea.input {
+  resize: vertical;
+}
+
+.iconWrapper {
+  position: relative;
+}
+
+.icon {
+  pointer-events: none;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  inset-inline-start: var(--space-2);
+  inset-block-start: var(--space-2);
+  color: var(--color-text-secondary);
+}

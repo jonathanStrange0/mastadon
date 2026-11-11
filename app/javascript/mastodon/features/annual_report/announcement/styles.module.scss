@@ -1,0 +1,43 @@
+@use '@/styles/mastodon/mixins';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-10) var(--space-16);
+  text-align: center;
+  color: var(--color-text-primary);
+  background: var(--color-bg-primary);
+  background:
+    radial-gradient(at 40% 87%, #240c9a99 0, transparent 50%),
+    radial-gradient(at 19% 10%, #6b0c9a99 0, transparent 50%),
+    radial-gradient(at 90% 27%, #9a0c8299 0, transparent 50%),
+    radial-gradient(at 16% 95%, #1e948299 0, transparent 50%)
+      var(--color-bg-primary);
+  border-bottom: var(--border-default);
+  position: relative;
+  pointer-events: all;
+
+  h2 {
+    @include mixins.type-heading-md;
+
+    margin-bottom: var(--space-2);
+  }
+
+  p {
+    @include mixins.type-body;
+
+    margin-bottom: var(--space-5);
+  }
+
+  .closeButton {
+    position: absolute;
+    bottom: var(--space-2);
+    right: var(--space-2);
+    margin-inline: 0;
+  }
+
+  :global(.modal-root__modal) & {
+    border-radius: var(--radius-4);
+  }
+}

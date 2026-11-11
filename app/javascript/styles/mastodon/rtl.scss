@@ -1,0 +1,29 @@
+@use 'variables' as *;
+
+html.rtl {
+  direction: rtl;
+
+  .reactions-bar {
+    direction: rtl;
+  }
+
+  .announcements__mastodon,
+  .drawer__inner__mastodon > img {
+    transform: scaleX(-1);
+  }
+
+  .account__avatar-wrapper {
+    float: right;
+  }
+
+  .admin-wrapper {
+    direction: rtl;
+  }
+
+  .dismissable-banner,
+  .warning-banner {
+    &__action {
+      float: left;
+    }
+  }
+}

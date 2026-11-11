@@ -1,0 +1,7 @@
+@use '@/styles/mastodon/mixins';
+
+.closeButton {
+  position: absolute;
+  top: var(--space-2);
+  inset-inline-end: var(--space-2);
+}
